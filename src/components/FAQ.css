@@ -1,0 +1,230 @@
+.faq {
+  padding: 7rem 2rem;
+  background: #FAF7F2;
+  border-top: 1px solid rgba(26, 18, 9, 0.12);
+}
+
+.faq__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.faq__label {
+  display: block;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4A6741;
+  margin-bottom: 1rem;
+}
+
+.faq__title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #1A1209;
+  margin-bottom: 1rem;
+}
+
+.faq__subtitle {
+  font-size: 1rem;
+  color: #8A7D6E;
+  line-height: 1.75;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+/* Items */
+.faq__lista-preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 4rem;
+}
+
+.faq__item {
+  background: #F0EAE0;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq__item:hover {
+  box-shadow: 0 4px 20px rgba(26, 18, 9, 0.08);
+}
+
+.faq__item--abierto {
+  background: white;
+  border-color: rgba(74, 103, 65, 0.3);
+  box-shadow: 0 4px 20px rgba(26, 18, 9, 0.08);
+}
+
+.faq__pregunta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.faq__pregunta:hover {
+  background: rgba(74, 103, 65, 0.04);
+}
+
+.faq__numero {
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #4A6741;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.faq__pregunta-texto {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A1209;
+  flex: 1;
+  line-height: 1.4;
+}
+
+.faq__icono {
+  font-family: sans-serif;
+  font-size: 1.3rem;
+  color: #4A6741;
+  font-weight: 300;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.faq__item--abierto .faq__icono {
+  transform: rotate(0deg);
+  color: #4A6741;
+}
+
+/* Respuesta */
+.faq__respuesta {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq__respuesta--visible {
+  max-height: 400px;
+}
+
+.faq__respuesta-inner {
+  padding: 0 1.5rem 1.5rem 3.5rem;
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  color: #3D3426;
+  line-height: 1.75;
+}
+
+.faq__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.faq__lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.faq__lista li::before {
+  content: '✦';
+  color: #4A6741;
+  font-size: 0.65rem;
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.faq__footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #F0EAE0;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+  border-radius: 12px;
+}
+
+.faq__footer-text {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #3D3426;
+  margin-bottom: 1.5rem;
+}
+
+.faq__footer-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.faq__btn {
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.8rem 1.8rem;
+  border-radius: 28px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.faq__btn--primary {
+  background: #1A1209;
+  color: #FAF7F2;
+  border: 2px solid #1A1209;
+}
+
+.faq__btn--primary:hover {
+  background: #4A6741;
+  border-color: #4A6741;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 103, 65, 0.3);
+}
+
+.faq__btn--outline {
+  background: transparent;
+  color: #1A1209;
+  border: 2px solid rgba(26, 18, 9, 0.25);
+}
+
+.faq__btn--outline:hover {
+  border-color: #1A1209;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .faq__respuesta-inner {
+    padding-left: 1.5rem;
+  }
+  .faq__footer-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+}

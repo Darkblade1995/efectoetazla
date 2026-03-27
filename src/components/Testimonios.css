@@ -1,0 +1,110 @@
+.testimonios {
+  padding: 7rem 2rem;
+  background: #FAF7F2;
+  border-top: 1px solid rgba(26, 18, 9, 0.12);
+}
+
+.testimonios__container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.testimonios__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.testimonios__label {
+  display: block;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4A6741;
+  margin-bottom: 0.8rem;
+}
+
+.testimonios__title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #1A1209;
+}
+
+.testimonios__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonio {
+  background: #F0EAE0;
+  border: 1px solid rgba(26, 18, 9, 0.12);
+  border-radius: 8px;
+  padding: 2.2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonio:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 24px rgba(26, 18, 9, 0.08);
+}
+
+.testimonio__quote {
+  font-family: 'Georgia', serif;
+  font-size: 4rem;
+  line-height: 0.8;
+  color: #E8F0E6;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.testimonio__text {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #3D3426;
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.testimonio__author {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.testimonio__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #4A6741;
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testimonio__name {
+  font-family: sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1A1209;
+}
+
+.testimonio__role {
+  font-family: sans-serif;
+  font-size: 0.78rem;
+  color: #8A7D6E;
+}
+
+@media (max-width: 900px) {
+  .testimonios__grid {
+    grid-template-columns: 1fr;
+  }
+}

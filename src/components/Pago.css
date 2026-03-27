@@ -1,0 +1,356 @@
+.pago__page {
+  min-height: 100vh;
+  position: relative;
+  padding: 3rem 2rem 5rem;
+}
+
+.pago__bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 20%, rgba(74, 103, 65, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(200, 135, 74, 0.05) 0%, transparent 55%),
+    #FAF7F2;
+  z-index: 0;
+}
+
+.pago__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pago__volver {
+  background: none;
+  border: none;
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  color: #8A7D6E;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+  margin-bottom: 2.5rem;
+  display: block;
+}
+.pago__volver:hover { color: #1A1209; }
+
+.pago__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.pago__label {
+  display: block;
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4A6741;
+  margin-bottom: 1rem;
+}
+
+.pago__title {
+  font-family: 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #1A1209;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.pago__title em { font-style: italic; color: #4A6741; }
+
+.pago__subtitle {
+  font-size: 0.95rem;
+  color: #8A7D6E;
+  line-height: 1.75;
+  max-width: 50ch;
+  margin: 0 auto;
+}
+
+/* Grid */
+.pago__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Secciones izquierda */
+.pago__seccion {
+  background: white;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.pago__seccion-titulo {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1A1209;
+  margin-bottom: 1.2rem;
+}
+
+/* Planes */
+.pago__planes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pago__plan {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 2px solid rgba(26, 18, 9, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #FAF7F2;
+}
+.pago__plan:hover { border-color: rgba(74, 103, 65, 0.4); }
+.pago__plan--activo {
+  border-color: #4A6741;
+  background: #E8F0E6;
+}
+
+.pago__plan-radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 18, 9, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+.pago__plan--activo .pago__plan-radio { border-color: #4A6741; }
+
+.pago__plan-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+.pago__plan-dot--activo { background: #4A6741; }
+
+.pago__plan-info { flex: 1; }
+
+.pago__plan-nombre {
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1A1209;
+}
+
+.pago__plan-precio {
+  font-family: sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4A6741;
+  white-space: nowrap;
+}
+
+/* Métodos */
+.pago__metodos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+
+.pago__metodo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.9rem 0.5rem;
+  background: #FAF7F2;
+  border: 2px solid rgba(26, 18, 9, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: sans-serif;
+}
+.pago__metodo-btn:hover {
+  border-color: var(--metodo-color);
+  background: var(--metodo-pale);
+}
+.pago__metodo-btn--activo {
+  border-color: var(--metodo-color) !important;
+  background: var(--metodo-pale) !important;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+
+.pago__metodo-emoji { font-size: 1.4rem; }
+.pago__metodo-nombre {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #3D3426;
+}
+
+/* Card derecha */
+.pago__card {
+  background: white;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(26, 18, 9, 0.08);
+  border-top: 4px solid var(--card-color);
+}
+
+.pago__card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.8rem 2rem;
+  background: var(--card-pale);
+  border-bottom: 1px solid rgba(26, 18, 9, 0.08);
+}
+
+.pago__card-emoji { font-size: 2rem; }
+
+.pago__card-titulo {
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1A1209;
+  margin-bottom: 0.2rem;
+}
+
+.pago__card-plan {
+  font-family: sans-serif;
+  font-size: 0.82rem;
+  color: #8A7D6E;
+}
+
+/* Datos */
+.pago__datos {
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(26, 18, 9, 0.08);
+}
+
+.pago__dato {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pago__dato-label {
+  font-family: sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8A7D6E;
+}
+
+.pago__dato-valor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FAF7F2;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  color: #1A1209;
+  font-weight: 600;
+}
+
+.pago__dato-valor--destacado {
+  background: var(--card-pale);
+  border-color: var(--card-color);
+  color: var(--card-color);
+  font-size: 1.2rem;
+}
+
+.pago__copiar {
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: white;
+  border: 1px solid rgba(26, 18, 9, 0.15);
+  border-radius: 8px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  color: #3D3426;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.pago__copiar:hover { border-color: #4A6741; color: #4A6741; }
+.pago__copiar--copiado {
+  background: #E8F0E6;
+  border-color: #4A6741;
+  color: #4A6741;
+}
+
+/* Instrucción */
+.pago__instruccion {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 1.2rem 2rem;
+  background: #FFFDF8;
+  border-bottom: 1px solid rgba(26, 18, 9, 0.08);
+}
+.pago__instruccion p {
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  color: #3D3426;
+  line-height: 1.6;
+}
+
+/* Comprobante */
+.pago__comprobante {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(26, 18, 9, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pago__comprobante-titulo {
+  font-family: sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #8A7D6E;
+}
+
+.pago__comprobante-email {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--card-color, #4A6741);
+}
+
+.pago__comprobante-nota {
+  font-family: sans-serif;
+  font-size: 0.78rem;
+  color: #8A7D6E;
+  line-height: 1.6;
+}
+
+/* Seguridad */
+.pago__seguridad {
+  padding: 1rem 2rem;
+  font-family: sans-serif;
+  font-size: 0.75rem;
+  color: #8A7D6E;
+  text-align: center;
+  background: #FAF7F2;
+}
+
+@media (max-width: 768px) {
+  .pago__grid { grid-template-columns: 1fr; }
+  .pago__metodos { grid-template-columns: repeat(2, 1fr); }
+}
