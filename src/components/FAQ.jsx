@@ -131,7 +131,9 @@ export default function FAQ({ onSuscribirse }) {
 </button>
 
 <a
-  href="mailto:hola@pageleaf.io"
+  href="https://www.instagram.com/efectoetazla?igsh=MWJnYjg0bmp0cWdjeg=="
+  target="_blank"
+  rel="noopener noreferrer"
   className="faq__btn faq__btn--outline"
 >
   Contactar equipo
