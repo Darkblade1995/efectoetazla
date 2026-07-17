@@ -1,0 +1,323 @@
+.recompensas__page {
+  min-height: 100vh;
+  background: #F0EAE0;
+  font-family: sans-serif;
+}
+
+.recompensas__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background: #1A1209;
+  color: #FAF7F2;
+}
+
+.recompensas__volver {
+  background: transparent;
+  border: 1px solid rgba(250, 247, 242, 0.3);
+  color: #FAF7F2;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.recompensas__volver:hover {
+  background: rgba(250, 247, 242, 0.1);
+}
+
+.recompensas__brand {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+}
+
+.recompensas__container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.recompensas__titulo {
+  text-align: center;
+}
+
+.recompensas__label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4A6741;
+  margin-bottom: 0.5rem;
+}
+
+.recompensas__h1 {
+  font-family: 'Georgia', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #1A1209;
+  margin: 0;
+}
+
+.recompensas__h1 em {
+  font-style: italic;
+  color: #4A6741;
+}
+
+/* Perfil card */
+.recompensas__perfil-card {
+  background: #1A1209;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: #FAF7F2;
+}
+
+.recompensas__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #4A6741;
+  color: white;
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.recompensas__perfil-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.recompensas__perfil-info h2 {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  font-size: 1.3rem;
+}
+
+.recompensas__nivel {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.recompensas__barra-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.recompensas__barra {
+  flex: 1;
+  height: 6px;
+  background: rgba(250, 247, 242, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.recompensas__barra-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.recompensas__barra-label {
+  font-size: 0.8rem;
+  color: rgba(250, 247, 242, 0.6);
+  white-space: nowrap;
+}
+
+.recompensas__stats {
+  display: flex;
+  gap: 2rem;
+  flex-shrink: 0;
+}
+
+.recompensas__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.recompensas__stat-num {
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #7DC67A;
+}
+
+.recompensas__stat-label {
+  font-size: 0.75rem;
+  color: rgba(250, 247, 242, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Grid */
+.recompensas__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.recompensas__seccion {
+  background: #FAF7F2;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+}
+
+.recompensas__seccion-titulo {
+  font-family: 'Georgia', serif;
+  font-size: 1.1rem;
+  color: #1A1209;
+  margin: 0 0 1.2rem;
+}
+
+/* Ranking */
+.recompensas__ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.recompensas__ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  background: #F0EAE0;
+  transition: background 0.2s;
+}
+
+.recompensas__ranking-item--yo {
+  background: #E8F0E6;
+  border: 1px solid rgba(74, 103, 65, 0.3);
+}
+
+.recompensas__pos {
+  font-size: 1.1rem;
+  width: 32px;
+  text-align: center;
+  font-weight: 700;
+  color: #8A7D6E;
+  flex-shrink: 0;
+}
+
+.recompensas__rank-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1A1209;
+  color: #FAF7F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.recompensas__rank-nombre {
+  flex: 1;
+  font-size: 0.88rem;
+  color: #1A1209;
+  font-weight: 500;
+}
+
+.recompensas__rank-puntos {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4A6741;
+}
+
+/* Insignias */
+.recompensas__insignias {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.recompensas__insignia {
+  position: relative;
+  background: #F0EAE0;
+  border: 1px solid rgba(26, 18, 9, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  opacity: 0.5;
+}
+
+.recompensas__insignia:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 18, 9, 0.1);
+  opacity: 0.8;
+}
+
+.recompensas__insignia--ganada {
+  opacity: 1;
+  background: #E8F0E6;
+  border-color: rgba(74, 103, 65, 0.3);
+}
+
+.recompensas__insignia-icono {
+  font-size: 1.8rem;
+}
+
+.recompensas__insignia-nombre {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1A1209;
+}
+
+.recompensas__insignia-desc {
+  font-size: 0.75rem;
+  color: #8A7D6E;
+  line-height: 1.3;
+}
+
+.recompensas__insignia-pts {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4A6741;
+  margin-top: 0.2rem;
+}
+
+.recompensas__insignia-check {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: #4A6741;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .recompensas__grid {
+    grid-template-columns: 1fr;
+  }
+  .recompensas__perfil-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .recompensas__insignias {
+    grid-template-columns: 1fr 1fr;
+  }
+}

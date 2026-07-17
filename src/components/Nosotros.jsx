@@ -5,7 +5,7 @@ const escritores = [
   {
     id: 4,
     nombre: 'Lucas Alzate',
-    edad: 37,
+    edad: 38,
     imagen: '/escritor4.jpg',
     inclinacion: 'Crónica & Narrativa',
     descripcion: 'Cronista de lo humano. Encuentra historias donde otros ven el silencio, y las convierte en experiencias que no se olvidan.',

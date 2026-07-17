@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
-export default function Navbar({ onPremium, onLogin, onNosotros, onBiblioteca, usuario, onCerrarSesion }) {
+export default function Navbar({ onPremium, onLogin, onNosotros, onBiblioteca, onPerfil, usuario, onCerrarSesion }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -46,10 +46,15 @@ export default function Navbar({ onPremium, onLogin, onNosotros, onBiblioteca, u
           </li>
         </ul>
 
-        {/* Si hay sesión muestra nombre + cerrar sesión, si no muestra botón Iniciar sesión */}
         {usuario ? (
           <div className="navbar__usuario">
-            <span className="navbar__usuario-nombre">👤 {nombreUsuario}</span>
+            <span
+              className="navbar__usuario-nombre"
+              onClick={() => { setMenuOpen(false); onPerfil(); }}
+              style={{ cursor: 'pointer' }}
+            >
+              👤 {nombreUsuario}
+            </span>
             <button className="navbar__cerrar-sesion" onClick={onCerrarSesion}>
               Cerrar sesión
             </button>

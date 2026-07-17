@@ -15,20 +15,20 @@ import FAQ from './components/FAQ';
 import Nosotros from './components/Nosotros';
 import Biblioteca from './components/Biblioteca';
 import Pago from './components/Pago';
+import PerfilUsuario from './components/PerfilUsuario';
+import Recompensas from './components/Recompensas';
 
 function App() {
   const [pagina, setPagina] = useState('inicio');
   const [usuario, setUsuario] = useState(null);
   const [cargando, setCargando] = useState(true);
 
-  // Detecta sesión activa al cargar
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUsuario(session?.user ?? null);
       setCargando(false);
     });
 
-    // Escucha cambios de sesión en tiempo real
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUsuario(session?.user ?? null);
     });
@@ -42,10 +42,19 @@ function App() {
     setPagina('inicio');
   };
 
-  // Función para páginas protegidas
-  const irAPaginaProtegida = (pagina) => {
+  const irAPaginaProtegida = (pag) => {
     if (usuario) {
-      setPagina(pagina);
+      setPagina(pag);
+    } else {
+      setPagina('bloqueado');
+    }
+  };
+
+  const irALeer = () => {
+    const plan = usuario?.user_metadata?.plan;
+    const esPremium = plan === 'lector' || plan === 'escritor';
+    if (esPremium) {
+      setPagina('perfil');
     } else {
       setPagina('bloqueado');
     }
@@ -106,6 +115,26 @@ function App() {
     return <Pago onVolver={() => setPagina('inicio')} />;
   }
 
+  if (pagina === 'perfil') {
+    return (
+      <PerfilUsuario
+        usuario={usuario}
+        onVolver={() => setPagina('inicio')}
+        onCerrarSesion={cerrarSesion}
+        onRecompensas={() => setPagina('recompensas')}
+      />
+    );
+  }
+
+  if (pagina === 'recompensas') {
+    return (
+      <Recompensas
+        usuario={usuario}
+        onVolver={() => setPagina('perfil')}
+      />
+    );
+  }
+
   return (
     <div className="app">
       <Navbar
@@ -113,12 +142,13 @@ function App() {
         onLogin={() => setPagina('login')}
         onNosotros={() => setPagina('nosotros')}
         onBiblioteca={() => irAPaginaProtegida('biblioteca')}
+        onPerfil={() => irAPaginaProtegida('perfil')}
         usuario={usuario}
         onCerrarSesion={cerrarSesion}
       />
-      <Hero />
+      <Hero usuario={usuario} onLeer={irALeer} />
       <Esencia />
-      <Coleccion />
+      <Coleccion usuario={usuario} onSuscribirse={() => setPagina('registro')} />
       <Suscripcion onSuscribirse={() => setPagina('registro')} />
       <Testimonios />
       <FAQ onSuscribirse={() => setPagina('registro')} />

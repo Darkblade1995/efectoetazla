@@ -1,0 +1,104 @@
+.lector__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 18, 9, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lector__wrapper {
+  width: 90vw;
+  height: 90vh;
+  background: #FAF7F2;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(26, 18, 9, 0.4);
+}
+
+.lector__topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #1A1209;
+  color: #FAF7F2;
+}
+
+.lector__titulo {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.lector__cerrar {
+  background: transparent;
+  border: 1px solid rgba(250, 247, 242, 0.3);
+  color: #FAF7F2;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.lector__cerrar:hover {
+  background: rgba(250, 247, 242, 0.1);
+}
+
+.lector__content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.lector__bloqueado {
+  background: #FAF7F2;
+  border-radius: 12px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lector__icono {
+  font-size: 3rem;
+}
+
+.lector__bloqueado h2 {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  color: #1A1209;
+}
+
+.lector__bloqueado p {
+  color: #8A7D6E;
+  line-height: 1.6;
+}
+
+.lector__btn {
+  margin-top: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: #4A6741;
+  color: white;
+  border: none;
+  border-radius: 28px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.lector__btn:hover {
+  background: #3a5233;
+}
+
+.lector__loading {
+  color: #FAF7F2;
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+}

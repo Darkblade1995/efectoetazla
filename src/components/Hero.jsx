@@ -1,7 +1,10 @@
 import React from 'react';
 import './Hero.css';
 
-export default function Hero() {
+export default function Hero({ usuario, onLeer }) {
+  const plan = usuario?.user_metadata?.plan;
+  const esPremium = plan === 'lector' || plan === 'escritor';
+
   return (
     <section className="hero" id="hero">
       <div className="hero__container">
@@ -36,6 +39,13 @@ export default function Hero() {
               className="hero__book-image"
             />
           </div>
+
+          <button
+            className={`hero__leer-btn ${esPremium ? 'hero__leer-btn--premium' : 'hero__leer-btn--lock'}`}
+            onClick={onLeer}
+          >
+            {esPremium ? '📖 Leer ahora' : '🔒 Solo Premium'}
+          </button>
 
           <div className="hero__launch-banner">
             <span className="hero__launch-star">✦</span>

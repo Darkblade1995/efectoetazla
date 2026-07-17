@@ -40,8 +40,10 @@ const books = [
   },
 ];
 
-export default function Coleccion() {
+export default function Coleccion({ usuario, onSuscribirse }) {
   const [hovered, setHovered] = useState(null);
+  const plan = usuario?.user_metadata?.plan;
+  const esPremium = plan === 'lector' || plan === 'escritor';
 
   return (
     <section className="coleccion" id="coleccion">
@@ -55,26 +57,37 @@ export default function Coleccion() {
           <a href="#suscripcion" className="coleccion__ver-todos">Ver todos →</a>
         </div>
 
-        <div className="coleccion__grid">
-          {books.map((book) => (
-            <div
-              key={book.id}
-              className={`book-card ${hovered === book.id ? 'book-card--hovered' : ''}`}
-              style={{ '--book-bg': book.color, '--book-accent': book.accent }}
-              onMouseEnter={() => setHovered(book.id)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <div className="book-card__spine" />
-              <div className="book-card__inner">
-                <span className="book-card__category">{book.category}</span>
-                <h3 className="book-card__title">{book.title}</h3>
-                <p className="book-card__author">{book.author}</p>
-                <p className="book-card__desc">{book.desc}</p>
-                <a href="#suscripcion" className="book-card__cta">Leer ahora →</a>
+        {esPremium ? (
+          <div className="coleccion__grid">
+            {books.map((book) => (
+              <div
+                key={book.id}
+                className={`book-card ${hovered === book.id ? 'book-card--hovered' : ''}`}
+                style={{ '--book-bg': book.color, '--book-accent': book.accent }}
+                onMouseEnter={() => setHovered(book.id)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                <div className="book-card__spine" />
+                <div className="book-card__inner">
+                  <span className="book-card__category">{book.category}</span>
+                  <h3 className="book-card__title">{book.title}</h3>
+                  <p className="book-card__author">{book.author}</p>
+                  <p className="book-card__desc">{book.desc}</p>
+                  <a href="#suscripcion" className="book-card__cta">Leer ahora →</a>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="coleccion__bloqueado">
+            <span className="coleccion__bloqueado-icono">🔒</span>
+            <h3>Contenido exclusivo para miembros Premium</h3>
+            <p>Accede a nuestra colección completa con un plan Lector o Escritor.</p>
+            <button className="coleccion__bloqueado-btn" onClick={onSuscribirse}>
+              Ver planes →
+            </button>
+          </div>
+        )}
 
         <div className="coleccion__quote">
           <div className="coleccion__quote-mark">"</div>
@@ -82,7 +95,7 @@ export default function Coleccion() {
             La lectura es un acto de resistencia. En un mundo que nos pide
             constantemente que reaccionemos, leer nos permite que pensemos.
           </blockquote>
-          <cite>— Fragmento de <em>El Arte de Pensar Despacio</em></cite>
+          — Fragmento de <em>El Arte de Pensar Despacio</em>
         </div>
 
       </div>

@@ -3,21 +3,6 @@ import './Suscripcion.css';
 
 const plans = [
   {
-    id: 'fundacional',
-    name: 'Fundacional',
-    price: 'GRATUITO',
-    priceDetail: null,
-    features: [
-      { ok: true,  text: 'Acceso a libros de dominio público' },
-      { ok: true,  text: 'Reflexiones de libros clásicos' },
-      { ok: false, text: 'Lectura de contenido Efecto Etazla' },
-      { ok: false, text: 'Lectura de reflexiones de autores' },
-      { ok: false, text: 'Publicar reflexiones propias' },
-      { ok: false, text: 'Perfil de autor' },
-    ],
-    ctaStyle: 'outline',
-  },
-  {
     id: 'lector',
     name: 'Lector',
     price: '$25.000',
@@ -104,11 +89,11 @@ export default function Suscripcion({ onSuscribirse }) {
               </ul>
 
               <button
-                    className={`plan-card__cta plan-card__cta--${plan.ctaStyle}`}
-                    onClick={onSuscribirse}
-                                    >
-                        Obtener →
-                        </button>
+                className={`plan-card__cta plan-card__cta--${plan.ctaStyle}`}
+                onClick={onSuscribirse}
+              >
+                Obtener →
+              </button>
             </div>
           ))}
         </div>
