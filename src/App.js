@@ -152,7 +152,7 @@ function App() {
       <Suscripcion onSuscribirse={() => setPagina('registro')} />
       <Testimonios />
       <FAQ onSuscribirse={() => setPagina('registro')} />
-      <Footer />
+      <Footer onNosotros={() => setPagina('nosotros')} />
     </div>
   );
 }

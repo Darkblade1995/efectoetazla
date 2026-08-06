@@ -17,8 +17,8 @@ export default function Hero({ usuario, onLeer }) {
           </h1>
           <p className="hero__description">
             Efecto Etazla es un espacio digital por suscripción donde la lectura,
-            la reflexión y la escritura se encuentran, explora clásicos de dominio público,
-            reflexiones originales y textos seleccionados por nuestra editorial.
+            la reflexión y la escritura se encuentran. Descubre reflexiones originales
+            y textos seleccionados por nuestra editorial.
           </p>
           <div className="hero__actions">
             <a href="#coleccion" className="btn btn--primary">Explorar biblioteca</a>

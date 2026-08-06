@@ -3,7 +3,6 @@ import { supabase } from '../supabase';
 import './Registro.css';
 
 const planes = [
-  { id: 'fundacional', nombre: 'Fundacional', precio: 'Gratis', desc: 'Acceso a clásicos de dominio público' },
   { id: 'lector', nombre: 'Lector', precio: '$25.000 / mes', desc: 'Acceso completo a la biblioteca' },
   { id: 'escritor', nombre: 'Escritor', precio: '$50.000 / mes', desc: 'Publica tus propias reflexiones', destacado: true },
 ];
@@ -45,11 +44,7 @@ export default function Registro({ onVolver, onPagar, onExito }) {
       setError('No se pudo crear la cuenta: ' + error.message);
       setCargando(false);
     } else {
-      if (planSeleccionado !== 'fundacional') {
-        onPagar();
-      } else {
-        onExito();
-      }
+      onPagar();
     }
   };
 

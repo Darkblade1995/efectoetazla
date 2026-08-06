@@ -55,19 +55,6 @@ export default function Esencia() {
           </div>
         </div>
 
-        <div className="esencia__stats">
-          {[
-            ['12', 'Editores curadores'],
-            ['50+', 'Libros añadidos mensualmente'],
-            ['24k', 'Lectores activos'],
-          ].map(([num, label]) => (
-            <div key={label} className="esencia__stat">
-              <span className="esencia__stat-num">{num}</span>
-              <span className="esencia__stat-label">{label}</span>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );
