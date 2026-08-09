@@ -357,3 +357,20 @@
   font-size: 0.88rem;
   margin-bottom: 1rem;
 }
+
+.login__mensaje {
+  background: #E8F0E6;
+  color: #4A6741;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+button.login__olvidaste {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}

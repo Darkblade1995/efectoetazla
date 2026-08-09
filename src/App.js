@@ -17,20 +17,29 @@ import Biblioteca from './components/Biblioteca';
 import Pago from './components/Pago';
 import PerfilUsuario from './components/PerfilUsuario';
 import Recompensas from './components/Recompensas';
+import NuevaPassword from './components/NuevaPassword';
 
 function App() {
   const [pagina, setPagina] = useState('inicio');
   const [usuario, setUsuario] = useState(null);
   const [cargando, setCargando] = useState(true);
+  const [esRecuperacion, setEsRecuperacion] = useState(false);
 
   useEffect(() => {
+    if (window.location.hash.includes('type=recovery')) {
+      setEsRecuperacion(true);
+    }
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUsuario(session?.user ?? null);
       setCargando(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUsuario(session?.user ?? null);
+      if (event === 'PASSWORD_RECOVERY') {
+        setEsRecuperacion(true);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -60,11 +69,33 @@ function App() {
     }
   };
 
+  const irAFAQ = () => {
+    setPagina('inicio');
+    setTimeout(() => {
+      const el = document.getElementById('faq');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
   if (cargando) {
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#FAF7F2' }}>
         <p style={{ fontFamily: 'Georgia', color: '#8A7D6E' }}>Cargando...</p>
       </div>
+    );
+  }
+
+  if (esRecuperacion) {
+    return (
+      <NuevaPassword
+        onExito={() => {
+          setEsRecuperacion(false);
+          setPagina('inicio');
+          window.history.replaceState(null, '', window.location.pathname);
+        }}
+      />
     );
   }
 
@@ -152,7 +183,7 @@ function App() {
       <Suscripcion onSuscribirse={() => setPagina('registro')} />
       <Testimonios />
       <FAQ onSuscribirse={() => setPagina('registro')} />
-      <Footer onNosotros={() => setPagina('nosotros')} />
+      <Footer onNosotros={() => setPagina('nosotros')} onFAQ={irAFAQ} />
     </div>
   );
 }
