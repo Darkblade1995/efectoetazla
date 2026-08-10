@@ -106,8 +106,8 @@ export default function PerfilUsuario({ usuario, onVolver, onCerrarSesion, onRec
               <div className="perfil__libro-card">
                 <div className="perfil__libro-cover">📗</div>
                 <div className="perfil__libro-info">
-                  <h4>El Arte de Pensar Despacio</h4>
-                  <p>Carlos Méndez</p>
+                  <h4>El Niño que No Dejaste de Ser</h4>
+                  <p>Lucas Alzate</p>
                   {location && (
                     <span className="perfil__progreso">Progreso guardado ✓</span>
                   )}
