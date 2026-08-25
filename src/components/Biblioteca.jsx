@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '../supabase';
 import './Biblioteca.css';
-
-const supabase = createClient(
-  'https://zdfpeyooosmnfzieopfj.supabase.co',
-  'sb_publishable_Zs_HSttPCZYDUzUZPYcEIA_K8NzhaLa'
-);
 
 const librosIniciales = [
   {
