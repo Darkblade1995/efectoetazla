@@ -32,6 +32,7 @@ const librosIniciales = [
   },
 ];
 
+const IDS_INICIALES = librosIniciales.map(l => l.id);
 const PALABRAS_POR_PAGINA = 80;
 
 function dividirEnPaginas(contenido) {
@@ -215,6 +216,7 @@ export default function Biblioteca({ onVolver }) {
   const [mostrarForm, setMostrarForm] = useState(false);
   const [cargando, setCargando] = useState(true);
   const [guardando, setGuardando] = useState(false);
+  const [eliminandoId, setEliminandoId] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -265,6 +267,27 @@ export default function Biblioteca({ onVolver }) {
     setGuardando(false);
   };
 
+  const eliminarLibro = async (id) => {
+    const confirmar = window.confirm('¿Seguro que quieres eliminar este escrito? Esta acción no se puede deshacer.');
+    if (!confirmar) return;
+
+    setEliminandoId(id);
+    setError(null);
+
+    const { error } = await supabase
+      .from('escritos')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error eliminando escrito:', error);
+      setError('No se pudo eliminar el escrito. Intenta de nuevo.');
+    } else {
+      setLibros(prev => prev.filter(libro => libro.id !== id));
+    }
+    setEliminandoId(null);
+  };
+
   return (
     <div className="biblioteca">
       <div className="biblioteca__container">
@@ -291,32 +314,45 @@ export default function Biblioteca({ onVolver }) {
           <div className="biblioteca__cargando">Cargando escritos...</div>
         ) : (
           <div className="biblioteca__grid">
-            {libros.map((libro) => (
-              <div
-                key={libro.id}
-                className="biblioteca-card"
-                style={{ '--card-bg': libro.color, '--card-accent': libro.accent }}
-              >
-                <div className="biblioteca-card__spine" />
-                <div className="biblioteca-card__inner">
-                  <span className="biblioteca-card__categoria">{libro.categoria}</span>
-                  <h3 className="biblioteca-card__titulo">{libro.titulo}</h3>
-                  <p className="biblioteca-card__autor">{libro.autor}</p>
-                  <p className="biblioteca-card__preview">{libro.contenido.slice(0, 120)}...</p>
-                  <div className="biblioteca-card__footer">
-                    <span className="biblioteca-card__paginas">
-                      📄 {Math.ceil(libro.contenido.split(' ').length / PALABRAS_POR_PAGINA)} páginas
-                    </span>
-                    <button
-                      className="biblioteca-card__leer"
-                      onClick={() => setLibroAbierto(libro)}
-                    >
-                      Leer →
-                    </button>
+            {libros.map((libro) => {
+              const esEliminable = !IDS_INICIALES.includes(libro.id);
+              return (
+                <div
+                  key={libro.id}
+                  className="biblioteca-card"
+                  style={{ '--card-bg': libro.color, '--card-accent': libro.accent }}
+                >
+                  <div className="biblioteca-card__spine" />
+                  <div className="biblioteca-card__inner">
+                    {esEliminable && (
+                      <button
+                        className="biblioteca-card__eliminar"
+                        onClick={() => eliminarLibro(libro.id)}
+                        disabled={eliminandoId === libro.id}
+                        title="Eliminar escrito"
+                      >
+                        {eliminandoId === libro.id ? '…' : '✕'}
+                      </button>
+                    )}
+                    <span className="biblioteca-card__categoria">{libro.categoria}</span>
+                    <h3 className="biblioteca-card__titulo">{libro.titulo}</h3>
+                    <p className="biblioteca-card__autor">{libro.autor}</p>
+                    <p className="biblioteca-card__preview">{libro.contenido.slice(0, 120)}...</p>
+                    <div className="biblioteca-card__footer">
+                      <span className="biblioteca-card__paginas">
+                        📄 {Math.ceil(libro.contenido.split(' ').length / PALABRAS_POR_PAGINA)} páginas
+                      </span>
+                      <button
+                        className="biblioteca-card__leer"
+                        onClick={() => setLibroAbierto(libro)}
+                      >
+                        Leer →
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>
